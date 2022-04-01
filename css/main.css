@@ -136,7 +136,7 @@ h3 {
     left: 0;
     top: 125px;
     z-index: 2;
-    transform: translate(calc(-100% - 22px), 0);
+    transform: translateX(-290px);
 }
 
 .large-cirlce {
@@ -243,6 +243,7 @@ h3 {
     -webkit-transform: scale(3.1) translateY(138px);
     -ms-transform: scale(3.1) translateY(138px);
     transform: scale(3.1) translateY(138px);
+    /* opacity: 0; */
 }
 
 .site-title img {
