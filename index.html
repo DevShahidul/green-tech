@@ -19,7 +19,7 @@
                     <div class="video-thumb">
                         <img src="./images/main-bg.jpg" alt="Main background">
                     </div>
-                    <video playsinline="" class="video-player" height="100%" autoplay="autoplay" loop="loop" muted="true" width="100%" poster="https://ak.picdn.net/shutterstock/videos/1024386896/thumb/1.jpg">
+                    <video playsinline="" class="video-player" height="100%" autoplay="autoplay" loop="loop" muted="true" width="100%" poster="./images/main-bg.jpg">
                         <source src="https://ak.picdn.net/shutterstock/videos/1024386896/preview/stock-footage-spring-background-k-slow-motion-spring-background-with-green-leaves-and-bokeh.webm" type="video/webm">
                         <source src="https://ak.picdn.net/shutterstock/videos/1024386896/preview/stock-footage-spring-background-k-slow-motion-spring-background-with-green-leaves-and-bokeh.mp4" type="video/mp4"></video>
                     <!-- <iframe src="" frameborder="0"></iframe> -->
@@ -390,22 +390,23 @@
                 const videoWrap = $(".video-wrap");
                 const hoverTriger = $(".explore-wrap");
                 $(function () {
-                    hoverTriger.mouseenter(function (e) {
-                        e.stopImmediatePropagation();
-                        master.add(explodeOnHover());
-                    }).mouseleave(function (e) {
-                        e.stopImmediatePropagation();
-                        master.add(closeExplodeOnHover());
-                    })
-                }) // Ready function
-                $(window).on("load", function () {
-                    $("body").addClass("loaded");
                     master.add(explode());
                     const introTimer = window.setTimeout(function () {
                         moveAll();
                         master.add(closeExplode());
                         $(".mainOverlay").fadeOut(3000);
                     }, 3000);
+
+                    hoverTriger.mouseenter(function (e) {
+                        e.stopImmediatePropagation();
+                        master.add(explodeOnHover());
+                    }).mouseleave(function (e) {
+                        e.stopImmediatePropagation();
+                        master.add(closeExplodeOnHover());
+                    });
+                }) // Ready function
+                $(window).on("load", function () {
+                    $("body").addClass("loaded");
 
                 }) // Window load function
 
