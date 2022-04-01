@@ -130,8 +130,8 @@ h3 {
     width: 312px;
     height: 312px;
     border-radius: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    filter: blur(60px);
+    background: rgba(255, 255, 255, 0.6);
+    filter: blur(50px);
     position: absolute;
     left: 0;
     top: 125px;
@@ -156,6 +156,8 @@ h3 {
     z-index: 1;
     width: 100%;
     min-height: 100%;
+    background: linear-gradient(262.3deg, #BCD279 69.06%, #D7E7A6 101.32%);
+    mix-blend-mode: normal;
 }
 
 .video-overlay .overlay {
@@ -164,9 +166,6 @@ h3 {
     top: 0;
     width: 100%;
     height: 100%;
-    /* background: rgba(188, 210, 121, 0.6); */
-    background: linear-gradient(262.3deg, #BCD279 69.06%, #D7E7A6 101.32%);
-    mix-blend-mode: normal;
     z-index: 9;
 }
 
@@ -385,10 +384,28 @@ h3 {
     height: 355px;
     position: relative;
     transform: scale(0.372);
+    /* transform: scaleY(0);
+    transform-origin: bottom; */
     left: -345px;
     top: -26px;
     /* transform: scale(0.372) translate(-64vw, -63px); */
 }
+
+/* #base .leaf-base {
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+}
+
+#leftTop1,
+#leftTop2,
+#leftBottom1,
+#leftBottom2,
+#rightTop1,
+#rightTop2,
+#rightBottom1,
+#rightBottom2 {
+    opacity: 0;
+} */
 
 .leaf-svg-code>svg {
     position: absolute;
