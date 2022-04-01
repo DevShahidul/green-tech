@@ -91,6 +91,150 @@
         <script src="./js/jquery-3.6.0.min.js"></script>
         <script src="./js/TweenMax.min.js"></script>
         <script>
+            TweenLite.defaultEase = Power3.easeInOut;
+            var master = new TimelineMax({
+                delay: 0.8,
+                repeat: 0,
+                repeatDelay: 0.5
+            });
+            var mt = 1.85;
+            var es = Power2.easeOut;
+
+            function initIntro() {
+                var tl = new TimelineMax();
+                tl.set(".video-wrap, .logo, .content, .view-profile, .explore-future", {
+                    autoAlpha: 0
+                });
+                tl.set(".small-cirlce", {
+                    x: -290,
+                });
+                tl.set(".large-cirlce", {
+                    x: 468,
+                });
+                tl.set(".site-title", {
+                    y: 427,
+                    scale: 3.1,
+                })
+                tl.set(".leaf-svg-code", {
+                    top: "-26px",
+                    left: "-345px",
+                    scale: 0.372,
+                })
+                return tl;
+            };
+
+            function explode() {
+                let tl = new TimelineMax({
+                    id: "Explode"
+                });
+                tl.to("#rightTop1", mt, {
+                    x: 1252,
+                    y: -810,
+                    scale: 2,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#rightTop2", mt, {
+                    x: 1630,
+                    y: 390,
+                    scale: 1.3,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#rightBottom1", mt, {
+                    x: 716,
+                    y: 1030,
+                    scale: 2,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#leftBottom1", mt, {
+                    x: -800,
+                    y: 520,
+                    scale: 2,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#leftBottom2", mt, {
+                    x: -1750,
+                    y: 380,
+                    scale: 1.3,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    rotation: 360,
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#leftTop2", mt, {
+                    x: -1210,
+                    y: -660,
+                    scale: 2,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#rightBottom2", mt, {
+                    x: 1620,
+                    y: 960,
+                    scale: 2,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#leftTop1", mt, {
+                    x: -60,
+                    y: -550,
+                    scale: 1.2,
+                    rotation: 360,
+                    ebkitFilter: "blur(20px)",
+                    filter: "blur(20px)",
+                    ease: es,
+                    yoyo: true
+                }, 0);
+                tl.to("#base", mt, {
+                    autoAlpha: 0,
+                    ease: es
+                }, 0);
+                tl.to(".small-cirlce", mt, {
+                    x: 216,
+                    ease: es
+                }, 0);
+                tl.to(".large-cirlce", mt, {
+                    x: 0,
+                    ease: es
+                }, 0);
+                return tl;
+            }
+
+            function moveAll() {
+                var tl = new TimelineMax({
+                    id: "Move all"
+                });
+
+
+                return tl;
+            }
+
+            //initIntro();
+            //master.add(  );
+
+
             (function ($) {
                 const topLogo = $(".logo");
                 const siteTitle = $(".site-title");
@@ -114,9 +258,27 @@
                     console.log("I'm from ready function");
                 }) // Ready function
                 $(window).on("load", function () {
-                    $("body").addClass("loaded")
+                    $("body").addClass("loaded");
+                    master.add(explode());
                     console.log("I'm from load function");
                 }) // Window load function
+
+
+                //tl.to("#leftBun", mt, {morphSVG:"#leftSideHair", fill:"#be9664"}, 0);
+
+
+
+                // function explode() {
+                //     TweenMax.to(leafBase, 2, {
+                //         y: 418,
+                //         ease: es
+                //     }, "vanish");
+                //     TweenMax.set(".bottomFighter", {
+                //         rotation: 180,
+                //         y: 758,
+                //         transformOrigin: "center center"
+                //     });
+                // }
             })(jQuery);
         </script>
     </body>
