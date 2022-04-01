@@ -187,6 +187,12 @@
                     autoAlpha: 0,
                     ease: es
                 }, 0);
+
+                tl.to("#leftTop1, #leftTop2, #leftBottom1, #leftBottom2, #rightTop1, #rightTop2, #rightBottom1, #rightBottom2", mt, {
+                    autoAlpha: 0,
+                    ease: es
+                }, 0.3);
+
                 tl.to(".small-cirlce", mt, {
                     x: 216,
                     ease: es
@@ -278,6 +284,7 @@
                     autoAlpha: 0,
                     ease: es4
                 }, 0);
+
                 tl.to(".view-profile", tmH, {
                     autoAlpha: 1,
                     ease: es4
@@ -317,13 +324,14 @@
                     id: "Close explode"
                 });
 
-                tl.to("#base", mt, {
+                tl.to("#base", 3, {
                     autoAlpha: 1,
                     ease: es4
                 }, 0);
                 tl.to("#leftTop1, #leftTop2, #leftBottom1, #leftBottom2, #rightTop1, #rightTop2, #rightBottom1, #rightBottom2", mt, {
                     x: 0,
                     y: 0,
+                    autoAlpha: 1,
                     scale: 1,
                     rotation: 0,
                     webkitFilter: "blur(0px)",
@@ -339,15 +347,21 @@
                     id: "Move all"
                 });
 
-                tl.to("#base, .logo", mt, {
+                tl.to(".logo", mt, {
                     autoAlpha: 1,
                     ease: es
                 }, 0.3);
 
-                tl.to(".small-cirlce", mt, {
-                    autoAlpha: 0,
+                tl.to(".small-cirlce", 2, {
+                    x: 600,
+                    y: 200,
+                    //autoAlpha: 0,
                     ease: es
                 }, 0);
+                tl.to(".small-cirlce", 1, {
+                    autoAlpha: 0,
+                    ease: es
+                });
                 tl.to(".large-cirlce", mt, {
                     autoAlpha: 0,
                     ease: es
@@ -366,10 +380,14 @@
                     fill: "#304757",
                     ease: es,
                 }, 0);
-                tl.to(".video-overlay .overlay", 2.5, {
+                tl.to(".video-wrap", 1, {
+                    autoAlpha: 1,
+                    ease: es
+                }, 0);
+                tl.to(".video-overlay .overlay", 1, {
                     background: "rgba(188, 210, 121, 0.6)",
                     ease: es,
-                }, 0.3);
+                }, 0.5);
 
                 tl.to(".content", mt, {
                     autoAlpha: 1,
