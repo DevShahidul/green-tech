@@ -212,12 +212,17 @@
                 }, 0.3);
 
                 tl.to(".small-cirlce", mt, {
-                    x: 600,
+                    x: "40vw",
                     y: 200,
                     ease: es
                 }, 0);
+                tl.to(".small-cirlce", mt, {
+                    backgroundColor: "#ffffff",
+                    filter: "blur(20px)",
+                    ease: es
+                });
                 tl.to(".large-cirlce", mt, {
-                    x: -600,
+                    x: "-45vw",
                     y: 30,
                     ease: es
                 }, 0);
@@ -390,13 +395,13 @@
                     fill: "#304757",
                     ease: es,
                 }, 0);
+                tl.to(".video-overlay .overlay", 1, {
+                    autoAlpha: 1,
+                    ease: es,
+                }, 0.2);
                 tl.to(".video-wrap", 1, {
                     autoAlpha: 1,
                     ease: es
-                }, 0);
-                tl.to(".video-overlay .overlay", 1, {
-                    backgroundColor: "rgba(188, 210, 121, 0.6)",
-                    ease: es,
                 }, 0.5);
 
                 tl.to(".content", mt, {
