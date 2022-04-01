@@ -19,6 +19,10 @@
                     <div class="video-thumb">
                         <img src="./images/main-bg.jpg" alt="Main background">
                     </div>
+                    <video playsinline="" class="video-player" height="100%" autoplay="autoplay" loop="loop" muted="true" width="100%" poster="https://ak.picdn.net/shutterstock/videos/1024386896/thumb/1.jpg">
+                        <source src="https://ak.picdn.net/shutterstock/videos/1024386896/preview/stock-footage-spring-background-k-slow-motion-spring-background-with-green-leaves-and-bokeh.webm" type="video/webm">
+                        <source src="https://ak.picdn.net/shutterstock/videos/1024386896/preview/stock-footage-spring-background-k-slow-motion-spring-background-with-green-leaves-and-bokeh.mp4" type="video/mp4"></video>
+                    <!-- <iframe src="" frameborder="0"></iframe> -->
                 </div>
                 <div class="overlay"></div>
             </div>
@@ -76,9 +80,9 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="view-profile d-flex align-center justify-center">
+                        <a href="#" class="view-profile d-flex align-center justify-center">
                             <h3>View Portfolio</h3>
-                        </div>
+                        </a>
                         <a href="#" class="explore-future">
                             <span>Explore the future</span>
                             <figure class="icon arrow">
@@ -93,36 +97,15 @@
         <script src="./js/TweenMax.min.js"></script>
         <script>
             TweenLite.defaultEase = Power3.easeInOut;
-            var master = new TimelineMax({
+            let master = new TimelineMax({
                 delay: 0.8,
                 repeat: 0,
                 repeatDelay: 0.5
             });
-            var mt = 1.85;
-            var es = Power2.easeOut;
-
-            // function initIntro() {
-            //     var tl = new TimelineMax();
-            //     tl.set(".video-wrap, .logo, .content, .view-profile, .explore-future", {
-            //         autoAlpha: 0
-            //     });
-            //     tl.set(".small-cirlce", {
-            //         x: -290,
-            //     });
-            //     tl.set(".large-cirlce", {
-            //         x: 468,
-            //     });
-            //     tl.set(".site-title", {
-            //         y: 427,
-            //         scale: 3.1,
-            //     })
-            //     tl.set(".leaf-svg-code", {
-            //         top: "-26px",
-            //         left: "-345px",
-            //         scale: 0.372,
-            //     })
-            //     return tl;
-            // };
+            const mt = 1.5;
+            const tmH = 1;
+            const es = Power2.easeOut;
+            const es4 = Power4.easeOut;
 
             function explode() {
                 let tl = new TimelineMax({
@@ -133,7 +116,7 @@
                     y: -810,
                     scale: 2,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -142,7 +125,7 @@
                     y: 390,
                     scale: 1.3,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -151,7 +134,7 @@
                     y: 1030,
                     scale: 2,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -160,7 +143,7 @@
                     y: 520,
                     scale: 2,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -168,7 +151,7 @@
                     x: -1750,
                     y: 380,
                     scale: 1.3,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     rotation: 360,
                     ease: es,
@@ -178,7 +161,7 @@
                     y: -660,
                     scale: 2,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -187,7 +170,7 @@
                     y: 960,
                     scale: 2,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -196,7 +179,7 @@
                     y: -550,
                     scale: 1.2,
                     rotation: 360,
-                    ebkitFilter: "blur(20px)",
+                    webkitFilter: "blur(20px)",
                     filter: "blur(20px)",
                     ease: es,
                 }, 0);
@@ -215,91 +198,139 @@
                 return tl;
             }
 
-
             function explodeOnHover() {
                 let tl = new TimelineMax({
                     id: "Explode on hover"
                 });
-                tl.to("#rightTop1", mt, {
-                    x: 852,
-                    y: -410,
-                    scale: 1,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
-                }, 0);
-                tl.to("#rightTop2", mt, {
-                    x: 1030,
-                    y: 190,
-                    scale: 1.3,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
-                }, 0);
-                tl.to("#rightBottom1", mt, {
-                    x: 316,
-                    y: 430,
-                    scale: 2,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
-                }, 0);
-                tl.to("#leftBottom1", mt, {
-                    x: -400,
-                    y: 320,
-                    scale: 2,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
-                }, 0);
-                tl.to("#leftBottom2", mt, {
-                    x: -750,
-                    y: 180,
-                    scale: 1.3,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    rotation: 360,
-                    ease: es,
-                }, 0);
-                tl.to("#leftTop2", mt, {
-                    x: -610,
-                    y: -360,
-                    scale: 2,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
-                }, 0);
-                tl.to("#rightBottom2", mt, {
-                    x: 820,
-                    y: 460,
-                    scale: 2,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
-                }, 0);
-                tl.to("#leftTop1", mt, {
-                    x: -30,
+                tl.to("#rightTop1", tmH, {
+                    x: 330,
                     y: -250,
-                    scale: 1.2,
-                    rotation: 360,
-                    ebkitFilter: "blur(20px)",
-                    filter: "blur(20px)",
-                    ease: es,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
                 }, 0);
-                tl.to("#base", mt, {
+                tl.to("#rightTop2", tmH, {
+                    x: 200,
+                    y: -240,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#rightBottom1", tmH, {
+                    x: 315,
+                    y: 230,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#leftBottom1", tmH, {
+                    x: -200,
+                    y: 320,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#leftBottom2", tmH, {
+                    x: -355,
+                    y: 200,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#leftTop2", tmH, {
+                    x: -460,
+                    y: -110,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#rightBottom2", tmH, {
+                    x: 327,
+                    y: 77,
+                    scale: 1,
+                    // rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#leftTop1", tmH, {
+                    x: -155,
+                    y: -270,
+                    scale: 1,
+                    //rotation: 360,
+                    webkitFilter: "blur(10px)",
+                    filter: "blur(10px)",
+                    ease: es4,
+                }, 0);
+                tl.to("#base", tmH, {
                     autoAlpha: 0,
-                    ease: es
+                    ease: es4
                 }, 0);
-                tl.to(".view-profile", mt, {
+                tl.to(".view-profile", tmH, {
                     autoAlpha: 1,
+                    ease: es4
+                }, 0);
+                return tl;
+            }
+
+            function closeExplodeOnHover() {
+                var tl = new TimelineMax({
+                    id: "Close explode"
+                });
+
+                tl.to("#base", tmH, {
+                    autoAlpha: 1,
+                    ease: es4
+                }, 0);
+                tl.to("#leftTop1, #leftTop2, #leftBottom1, #leftBottom2, #rightTop1, #rightTop2, #rightBottom1, #rightBottom2", tmH, {
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    rotation: 0,
+                    webkitFilter: "blur(0px)",
+                    filter: "blur(0px)",
                     ease: es
                 }, 0);
+
+                tl.to(".view-profile", tmH, {
+                    autoAlpha: 0,
+                    ease: es4
+                }, 0);
+
+                return tl;
+            }
+
+            function closeExplode() {
+                var tl = new TimelineMax({
+                    id: "Close explode"
+                });
+
+                tl.to("#base", mt, {
+                    autoAlpha: 1,
+                    ease: es4
+                }, 0);
+                tl.to("#leftTop1, #leftTop2, #leftBottom1, #leftBottom2, #rightTop1, #rightTop2, #rightBottom1, #rightBottom2", mt, {
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    rotation: 0,
+                    webkitFilter: "blur(0px)",
+                    filter: "blur(0px)",
+                    ease: es
+                }, 0);
+
                 return tl;
             }
 
@@ -335,7 +366,7 @@
                     fill: "#304757",
                     ease: es,
                 }, 0);
-                tl.to(".video-overlay .overlay", mt, {
+                tl.to(".video-overlay .overlay", 2.5, {
                     background: "rgba(188, 210, 121, 0.6)",
                     ease: es,
                 }, 0.3);
@@ -353,35 +384,19 @@
                 return tl;
             }
 
-            function closeExplode() {
-                var tl = new TimelineMax({
-                    id: "Close explode"
-                });
-
-                tl.to("#leftTop1, #leftTop2, #leftBottom1, #leftBottom2, #rightTop1, #rightTop2, #rightBottom1, #rightBottom2", mt, {
-                    x: 0,
-                    y: 0,
-                    scale: 1,
-                    rotation: 0,
-                    ebkitFilter: "blur(0px)",
-                    filter: "blur(0px)",
-                    ease: es
-                }, 0);
-
-                return tl;
-            }
-
-            //initIntro();
-            //master.add(  );
-
 
             (function ($) {
                 const viewProfile = $(".view-profile");
                 const videoWrap = $(".video-wrap");
-                const leaf = $(".animated-leaf");
+                const hoverTriger = $(".explore-wrap");
                 $(function () {
-                    console.log("I'm from ready function");
-
+                    hoverTriger.mouseenter(function (e) {
+                        e.stopImmediatePropagation();
+                        master.add(explodeOnHover());
+                    }).mouseleave(function (e) {
+                        e.stopImmediatePropagation();
+                        master.add(closeExplodeOnHover());
+                    })
                 }) // Ready function
                 $(window).on("load", function () {
                     $("body").addClass("loaded");
@@ -389,13 +404,10 @@
                     const introTimer = window.setTimeout(function () {
                         moveAll();
                         master.add(closeExplode());
+                        $(".mainOverlay").fadeOut(3000);
                     }, 3000);
-                    //window.clearTimeout(introTimer);
-                    console.log("I'm from load function");
+
                 }) // Window load function
-
-
-                //tl.to("#leftTop1, #leftTop2, #leftBottom1, #leftBottom2, #rightTop1, #rightTop2, #rightBottom1, #rightBottom2", mt, {morphSVG:"#leftSideHair", fill:"#be9664"}, 0);
 
             })(jQuery);
         </script>
