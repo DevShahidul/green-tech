@@ -276,14 +276,20 @@ h3 {
 
 .content h1 {
     margin-top: 114px;
+    transform: translateY(100px);
+    opacity: 0;
 }
 
 .content p {
     margin-top: 22px;
+    transform: translateY(100px);
+    opacity: 0;
 }
 
 .about-link {
     margin-top: 72px;
+    transform: translateY(100px);
+    opacity: 0;
 }
 
 .about-link .icon {
