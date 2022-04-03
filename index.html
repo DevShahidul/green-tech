@@ -194,6 +194,18 @@
                     ease: es
                 }, "-=0.2");
 
+                tl.to(".leaf-svg-code", leafPart, {
+                    top: -26,
+                    ease: es
+                }, "-=0.4");
+
+                tl.to(".site-title", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                }, "-=0.2");
+
+
+
                 return tl;
             }
 
@@ -489,17 +501,17 @@
                     ease: es
                 }, 0.7);
 
-                tl.to(".content h1", 1, {
+                tl.to(".content h1", 1.5, {
                     y: 0,
                     autoAlpha: 1,
                     ease: es
                 }, 0.2);
-                tl.to(".content p", 1, {
+                tl.to(".content p", 1.5, {
                     y: 0,
                     autoAlpha: 1,
                     ease: es
                 }, 0.4);
-                tl.to(".content .about-link", 1, {
+                tl.to(".content .about-link", 1.5, {
                     y: 0,
                     autoAlpha: 1,
                     ease: es
