@@ -106,13 +106,13 @@
                 repeatDelay: 0.5
             });
             let circle = new TimelineMax({
-                delay: 0.1,
+                delay: 3.5,
                 repeat: 0,
                 repeatDelay: 0
             });
             const mt = 1.5;
             const tmH = 1;
-            const leafPart = 0.3;
+            const leafPart = 0.5;
             const es = Power2.easeOut;
             const es4 = Power4.easeOut;
 
@@ -120,7 +120,7 @@
                 let tl = new TimelineMax({
                     id: "Move circel"
                 });
-                tl.fromTo(".small-cirlce", 2.5, {
+                tl.fromTo(".small-cirlce", 4.5, {
                     x: "-290",
                     y: 20,
                     scale: 0,
@@ -134,12 +134,12 @@
                     filter: "blur(20px)",
                     ease: es
                 }, 0.2);
-                tl.to(".large-cirlce", 1, {
+                tl.to(".large-cirlce", 2.5, {
                     x: "-45vw",
                     y: 30,
                     ease: es
                 }, 0);
-                tl.to(".small-cirlce, .large-cirlce", mt, {
+                tl.to(".small-cirlce, .large-cirlce", 2, {
                     autoAlpha: 0,
                     ease: es
                 });
@@ -154,25 +154,25 @@
                 tl.to("#base .leaf-base", 1, {
                     strokeDashoffset: 0,
                     ease: es4
-                }, "-=0.7");
+                }, "-=0.6");
 
                 tl.to("#base .leaf-base", 1, {
                     fill: "#2B4858",
                     ease: es
-                }, "-=0.6");
+                }, "-=0.4");
 
                 tl.to("#leftBottom1", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                }, "-=0.5");
+                }, "-=0.2");
                 tl.to("#rightBottom1", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                }, "-=0.4");
+                }, "-=0.1");
                 tl.to("#rightBottom2", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                }, "-=0.3");
+                }, "-=0");
                 tl.to("#leftBottom2", leafPart, {
                     autoAlpha: 1,
                     ease: es
@@ -199,7 +199,7 @@
                     ease: es
                 }, "-=0.4");
 
-                tl.to(".site-title", leafPart, {
+                tl.to(".site-title", 1.5, {
                     autoAlpha: 1,
                     ease: es
                 }, "-=0.2");
@@ -535,15 +535,17 @@
 
                     master.add(drawLeaf());
                     circle.add(moveCircle());
-                    const explodeTimer = window.setTimeout(function () {
-                        master.add(explode());
-                    }, 2000);
+                    master.add(explode(), "=0.2");
+                    master.add(moveAll());
+                    master.add(closeExplode(), "-=2.8");
+                    // const explodeTimer = window.setTimeout(function () {
+                    //moveAll()
+                    // }, 2000);
                     const introTimer = window.setTimeout(function () {
-                        moveAll();
                         $("#base").attr("viewBox", "0 0 169 356")
-                        master.add(closeExplode());
-                        $(".mainOverlay").fadeOut(3000);
-                    }, 4800);
+                        // master.add(closeExplode());
+                        $(".mainOverlay").fadeOut(2500);
+                    }, 9000);
 
                     window.allow_to_explore = true;
                     window.last_show_date_num = 0;
