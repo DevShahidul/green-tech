@@ -83,14 +83,17 @@
                         <a href="#" class="view-profile d-flex align-center justify-center">
                             <h3>View Portfolio</h3>
                         </a>
-                        <a href="#" class="explore-future">
+                        <!-- <a href="#" class="explore-future">
                             <span>Explore the future</span>
                             <figure class="icon arrow">
                                 <img src="./images/long-arrow-right.svg" alt="">
                             </figure>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
+                <footer class="main-footer">
+                    <p>About Green Generation Fund</p>
+                </footer>
             </div>
         </main>
         <script src="./js/jquery-3.6.0.min.js"></script>
@@ -457,6 +460,7 @@
                 }, 0);
                 tl.to(".leaf-svg-code", mt, {
                     left: 0,
+                    top: 0,
                     scale: 1,
                     height: "355px",
                     ease: es
@@ -501,7 +505,7 @@
                     ease: es
                 }, 0.6);
 
-                tl.to(".explore-future", mt, {
+                tl.to(".explore-future, .main-footer", mt, {
                     autoAlpha: 1,
                     ease: es
                 }, 1.3);
