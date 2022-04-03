@@ -167,7 +167,7 @@ h3 {
     width: 100%;
     height: 100%;
     z-index: 9;
-    background-color: rgba(188, 210, 121, 0.6);
+    background-color: rgba(188, 210, 121, 0.7);
     opacity: 0;
 }
 
@@ -211,6 +211,7 @@ h3 {
     display: flex;
     width: 100%;
     height: 100%;
+    padding: 0 25px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -251,11 +252,13 @@ h3 {
 }
 
 .main-container {
+    position: relative;
     width: 1156px;
     max-width: 100%;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 50px;
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -299,7 +302,9 @@ h3 {
 .explore-wrap {
     width: 462px;
     text-align: center;
-    position: relative;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .view-profile {
@@ -389,28 +394,25 @@ h3 {
 }
 
 .leaf-svg-code {
-    width: 169px;
-    height: 355px;
+    width: 173px;
+    height: 359px;
     position: relative;
     transform: scale(0.372);
-    /* transform: scaleY(0);
-    transform-origin: bottom; */
-    left: -345px;
+    /* left: -345px; */
     top: -26px;
     /* transform: scale(0.372) translate(-64vw, -63px); */
 }
 
-/* #base .leaf-base {
+#base .leaf-base {
     stroke-dasharray: 900;
     stroke-dashoffset: 900;
     fill: none;
     stroke: #2B4858;
-    stroke-width: 10px;
-    fill: #2B4858;
-} */
+    stroke-width: 2px;
+}
 
 
-/* #leftTop1,
+#leftTop1,
 #leftTop2,
 #leftBottom1,
 #leftBottom2,
@@ -419,7 +421,7 @@ h3 {
 #rightBottom1,
 #rightBottom2 {
     opacity: 0;
-} */
+}
 
 .leaf-svg-code>svg {
     position: absolute;
@@ -437,14 +439,12 @@ h3 {
 svg#rightTop1 {
     height: 125px;
     top: 14px;
-    right: 17px;
-    /* transform: translate(86vw, -54vw) scale(2) rotate(-360deg); */
-    /* transform: translate(1240px, -810px) scale(2) rotate(-360deg); */
+    right: 19px;
 }
 
 svg#rightTop2 {
     height: 72px;
-    right: 10px;
+    right: 12px;
     top: 74px;
     /* transform: translate(114vw, 27vw) scale(1.3) rotate(-360deg); */
     /* transform: translate(1630px, 390px) scale(1.3) rotate(-360deg); */
@@ -452,7 +452,7 @@ svg#rightTop2 {
 
 svg#rightBottom1 {
     height: 58px;
-    right: 11px;
+    right: 13px;
     bottom: 62px;
     /* transform: translate(50vw, 71vw) scale(2) rotate(-360deg); */
     /* transform: translate(716px, 1030px) scale(2) rotate(-360deg); */
@@ -460,7 +460,7 @@ svg#rightBottom1 {
 
 svg#leftBottom1 {
     height: 57px;
-    left: 13px;
+    left: 15px;
     bottom: 63px;
     /* transform: translate(-56vw, 36vw) scale(2) rotate(-360deg); */
     /* transform: translate(-800px, 520px) scale(2) rotate(-360deg); */
@@ -468,7 +468,7 @@ svg#leftBottom1 {
 
 svg#leftBottom2 {
     height: 92px;
-    left: 9px;
+    left: 11px;
     bottom: 105px;
     /* transform: translate(-121vw, 26vw) scale(1.3) rotate(-360deg); */
     /* transform: translate(-1750px, 380px) scale(1.3) rotate(-360deg); */
@@ -476,14 +476,14 @@ svg#leftBottom2 {
 
 svg#leftTop2 {
     height: 121px;
-    left: 9px;
+    left: 11px;
     top: 47px;
     /* transform: translate(-83vw, -45vw) scale(2) rotate(-360deg); */
     /* transform: translate(-1210px, -660px) scale(2) rotate(-360deg); */
 }
 
 svg#rightBottom2 {
-    right: 11px;
+    right: 13px;
     bottom: 121px;
     height: 83px;
     /* transform: translate(111vw, 66vw) scale(2) rotate(-360deg); */
@@ -492,8 +492,56 @@ svg#rightBottom2 {
 
 svg#leftTop1 {
     height: 113px;
-    left: 45px;
+    left: 47px;
     top: 14px;
     /* transform: translate(-5vw, -40vw) scale(2) rotate(-360deg); */
     /* transform: translate(-60px, -550px) scale(1.2) rotate(-360deg); */
 }
+
+
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 54px;
+        line-height: 1.2;
+    }
+
+    .content h1 {
+        margin-top: 70px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    h1 {
+        font-size: 44px;
+    }
+
+    h3 {
+        font-size: 28px;
+        line-height: 35px;
+    }
+
+    .content {
+        width: calc(100% - 330px);
+    }
+
+    .explore-wrap {
+        width: 300px;
+    }
+
+    .view-profile,
+    .animated-leaf {
+        width: 300px;
+        height: 300px;
+    }
+
+    .leaf-svg-code {
+        top: auto;
+    }
+
+    .animated-leaf {
+        height: auto;
+        transform: scale(0.6);
+    }
+}
+
+@media screen and (max-width: 991px) {}

@@ -75,7 +75,7 @@
                                 <svg id="leftTop1" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 114">
                                     <path d="M20.702 13.27A144.073 144.073 0 0 0 34.238.583v113.038L.681 28.209c10.997-8.174 17.765-12.967 20.021-14.94Z" fill="#C6EA74" />
                                 </svg>
-                                <svg id="base" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169 356">
+                                <svg id="base" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="2 -2 165 352">
                                     <path class="leaf-base" d="M83.186.771c-3.102 0-5.922 1.41-7.614 3.947-4.512 5.638-9.588 10.994-15.51 15.222-2.538 1.973-9.87 7.33-22.56 16.632C23.684 46.72 14.096 55.74 8.174 64.197 1.971 72.654-.849 83.366.28 93.796v146.583c0 16.632 5.357 30.444 16.355 40.874 19.458 19.169 51.042 21.706 62.886 21.988v52.432h9.306v-52.432c11.843-.282 43.427-2.819 62.885-21.988 10.716-10.43 16.356-24.242 16.356-40.874V93.796c.282-1.41.282-2.82.282-4.229 0-9.02-2.82-17.759-8.178-25.088-5.64-8.457-15.228-17.477-29.328-27.625-12.69-9.303-20.022-14.94-22.56-16.632-5.922-4.51-10.998-9.584-15.51-15.222C90.519 2.18 87.698.77 84.596.77h-1.41Z" fill="#2B4858" stroke-width="10" />
                                 </svg>
                             </div>
@@ -102,10 +102,6 @@
                 repeat: 0,
                 repeatDelay: 0.5
             });
-            let drawMaster = new TimelineMax({
-                delay: 0.2,
-                repeat: 0,
-            });
             let circle = new TimelineMax({
                 delay: 0.1,
                 repeat: 0,
@@ -121,7 +117,6 @@
                 let tl = new TimelineMax({
                     id: "Move circel"
                 });
-
                 tl.fromTo(".small-cirlce", 2.5, {
                     x: "-290",
                     y: 20,
@@ -149,54 +144,52 @@
                 return tl;
             }
 
-
             function drawLeaf() {
 
                 var tl = new TimelineMax();
 
                 tl.to("#base .leaf-base", 1, {
-                    strokeDasharray: 0,
                     strokeDashoffset: 0,
                     ease: es4
-                });
+                }, "-=0.7");
 
                 tl.to("#base .leaf-base", 1, {
                     fill: "#2B4858",
                     ease: es
-                });
+                }, "-=0.6");
 
                 tl.to("#leftBottom1", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.5");
                 tl.to("#rightBottom1", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.4");
                 tl.to("#rightBottom2", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.3");
                 tl.to("#leftBottom2", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.2");
                 tl.to("#leftTop2", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.1");
                 tl.to("#rightTop2", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.0");
                 tl.to("#rightTop1", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.1");
                 tl.to("#leftTop1", leafPart, {
                     autoAlpha: 1,
                     ease: es
-                });
+                }, "-=0.2");
 
                 return tl;
             }
@@ -205,6 +198,7 @@
                 let tl = new TimelineMax({
                     id: "Explode",
                 });
+
                 tl.to(".site-title", mt, {
                     autoAlpha: 0,
                     ease: es
@@ -419,6 +413,10 @@
                     autoAlpha: 1,
                     ease: es4
                 }, 0);
+                tl.to("#base .leaf-base", 1, {
+                    strokeWidth: 0,
+                    ease: es4
+                }, "-=0.7");
                 // tl.to(".small-cirlce", mt, {
                 //     scale: 7,
                 //     ease: es4
@@ -451,9 +449,16 @@
                 //     autoAlpha: 0,
                 //     ease: es
                 // }, 0);
+                tl.to(".explore-wrap", mt, {
+                    right: 0,
+                    marginTop: 0,
+                    x: 0,
+                    ease: es
+                }, 0);
                 tl.to(".leaf-svg-code", mt, {
                     left: 0,
                     scale: 1,
+                    height: "355px",
                     ease: es
                 }, 0);
                 tl.to(".site-title", mt, {
@@ -496,8 +501,6 @@
                     ease: es
                 }, 0.6);
 
-
-
                 tl.to(".explore-future", mt, {
                     autoAlpha: 1,
                     ease: es
@@ -514,14 +517,17 @@
                 const parentContainer = $(".main-container");
                 $(function () {
 
-                    //drawMaster.add(drawLeaf());
+                    master.add(drawLeaf());
                     circle.add(moveCircle());
-                    master.add(explode());
+                    const explodeTimer = window.setTimeout(function () {
+                        master.add(explode());
+                    }, 2000);
                     const introTimer = window.setTimeout(function () {
                         moveAll();
+                        $("#base").attr("viewBox", "0 0 169 356")
                         master.add(closeExplode());
                         $(".mainOverlay").fadeOut(3000);
-                    }, 3000);
+                    }, 4800);
 
                     window.allow_to_explore = true;
                     window.last_show_date_num = 0;
