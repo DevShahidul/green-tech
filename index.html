@@ -20,8 +20,8 @@
                         <img src="./images/main-bg.jpg" alt="Main background">
                     </div>
                     <video playsinline="" class="video-player" height="100%" autoplay="autoplay" loop="loop" muted="true" width="100%" poster="./images/main-bg.jpg">
-                        <source src="https://ak.picdn.net/shutterstock/videos/1024386896/preview/stock-footage-spring-background-k-slow-motion-spring-background-with-green-leaves-and-bokeh.webm" type="video/webm">
-                        <source src="https://ak.picdn.net/shutterstock/videos/1024386896/preview/stock-footage-spring-background-k-slow-motion-spring-background-with-green-leaves-and-bokeh.mp4" type="video/mp4"></video>
+                        <!-- <source src="./video/homepage-video.mp4" type="video/webm"> -->
+                        <source src="./video/homepage-video.mp4" type="video/mp4"></video>
                     <!-- <iframe src="" frameborder="0"></iframe> -->
                 </div>
                 <div class="overlay"></div>
@@ -102,6 +102,10 @@
                 repeat: 0,
                 repeatDelay: 0.5
             });
+            let drawMaster = new TimelineMax({
+                delay: 0.2,
+                repeat: 0,
+            });
             let circle = new TimelineMax({
                 delay: 0.1,
                 repeat: 0,
@@ -109,6 +113,7 @@
             });
             const mt = 1.5;
             const tmH = 1;
+            const leafPart = 0.3;
             const es = Power2.easeOut;
             const es4 = Power4.easeOut;
 
@@ -144,44 +149,67 @@
                 return tl;
             }
 
-            // function introPlay() {
-            //     let tl = new TimelineMax({
-            //         id: "Play intro"
-            //     });
-            //     tl.to(".site-title", 2, {
-            //         autoAlpha: 1,
-            //         ease: es
-            //     });
 
-            //     return tl;
-            // }
+            function drawLeaf() {
 
-            // function drawLeaf() {
-            //     let tl = new TimelineMax({
-            //         id: " Be leaf"
-            //     })
+                var tl = new TimelineMax();
 
-            //     tl.o("#base .leaf-base", 1, {
-            //         drawSVG: 0,
-            //         ease: es
-            //     }, 1);
+                tl.to("#base .leaf-base", 1, {
+                    strokeDasharray: 0,
+                    strokeDashoffset: 0,
+                    ease: es4
+                });
 
-            //     tl.to("#base .leaf-base", mt, {
-            //         fill: "#2B4858",
-            //         ease: es
-            //     });
+                tl.to("#base .leaf-base", 1, {
+                    fill: "#2B4858",
+                    ease: es
+                });
 
-            //     return tl;
-            // }
+                tl.to("#leftBottom1", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#rightBottom1", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#rightBottom2", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#leftBottom2", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#leftTop2", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#rightTop2", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#rightTop1", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+                tl.to("#leftTop1", leafPart, {
+                    autoAlpha: 1,
+                    ease: es
+                });
+
+                return tl;
+            }
 
             function explode() {
                 let tl = new TimelineMax({
-                    id: "Explode"
+                    id: "Explode",
                 });
                 tl.to(".site-title", mt, {
                     autoAlpha: 0,
                     ease: es
                 }, 0);
+
                 tl.to("#rightTop1", mt, {
                     x: 1252,
                     y: -810,
@@ -384,7 +412,7 @@
 
             function closeExplode() {
                 var tl = new TimelineMax({
-                    id: "Close explode"
+                    id: "Close explode",
                 });
 
                 tl.to("#base", 3, {
@@ -483,9 +511,10 @@
                 const viewProfile = $(".view-profile");
                 const videoWrap = $(".video-wrap");
                 const hoverTriger = $(".explore-wrap");
+                const parentContainer = $(".main-container");
                 $(function () {
-                    //master.add(drawLeaf());
-                    //master.add(introPlay());
+
+                    //drawMaster.add(drawLeaf());
                     circle.add(moveCircle());
                     master.add(explode());
                     const introTimer = window.setTimeout(function () {
@@ -494,13 +523,26 @@
                         $(".mainOverlay").fadeOut(3000);
                     }, 3000);
 
-                    hoverTriger.mouseenter(function (e) {
-                        e.stopPropagation();
-                        master.add(explodeOnHover());
-                    }).mouseleave(function (e) {
-                        e.stopPropagation();
-                        master.add(closeExplodeOnHover());
+                    window.allow_to_explore = true;
+                    window.last_show_date_num = 0;
+                    $(".explore-wrap").on({
+                        mouseenter: function (e) {
+                            e.stopPropagation();
+                            if (allow_to_explore && (new Date().getTime() - last_show_date_num) / 1000 >= 2) {
+                                master.add(explodeOnHover());
+                                allow_to_explore = false;
+                                last_show_date_num = (new Date()).getTime();
+                                //console.log('showing?')
+                            }
+                        },
+                        mouseleave: function (e) {
+                            e.stopPropagation();
+                            allow_to_explore = true;
+                            master.add(closeExplodeOnHover());
+                            //console.log('on out');
+                        }
                     });
+
                 }) // Ready function
                 $(window).on("load", function () {
                     $("body").addClass("loaded");

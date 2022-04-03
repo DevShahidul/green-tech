@@ -403,9 +403,14 @@ h3 {
 /* #base .leaf-base {
     stroke-dasharray: 900;
     stroke-dashoffset: 900;
-}
+    fill: none;
+    stroke: #2B4858;
+    stroke-width: 10px;
+    fill: #2B4858;
+} */
 
-#leftTop1,
+
+/* #leftTop1,
 #leftTop2,
 #leftBottom1,
 #leftBottom2,
