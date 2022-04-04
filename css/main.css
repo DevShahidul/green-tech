@@ -237,6 +237,10 @@ h3 {
     object-fit: cover;
 }
 
+.intro-page .logo {
+    display: none;
+}
+
 .site-title {
     width: 95px;
     height: 42px;
