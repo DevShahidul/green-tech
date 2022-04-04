@@ -457,6 +457,12 @@
                     id: "Move all"
                 });
 
+
+                tl.to(".main-container", mt, {
+                    alignItems: "center",
+                    ease: es
+                }, 0.3);
+
                 tl.to(".logo", mt, {
                     autoAlpha: 1,
                     ease: es
@@ -540,9 +546,7 @@
                     master.add(explode(), "=0.2");
                     master.add(moveAll());
                     master.add(closeExplode(), "-=2.8");
-                    // const explodeTimer = window.setTimeout(function () {
-                    //moveAll()
-                    // }, 2000);
+
                     const introTimer = window.setTimeout(function () {
                         $("#base").attr("viewBox", "0 0 169 356")
                         // master.add(closeExplode());
